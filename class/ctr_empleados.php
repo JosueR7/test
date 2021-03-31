@@ -73,8 +73,16 @@ class Empleados{
 
     }
 
-    function delete(){
+    function delete($user){
+        $conexion = new Conect();
+        $sql = "DELETE FROM empleados WHERE empleados.id = '$user'";
 
+        try {
+            $make = $conexion->prepare($sql);
+            $make->execute();
+        } catch (PDOException $e) {
+            echo "Error al realizar la consulta. Detalle del error: ".$e->getMessage();
+        }
     }
 }
 ?>
