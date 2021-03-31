@@ -54,8 +54,8 @@ class Empleados{
                     <td>'.$sexo.'</td>
                     <td>'.$area.'</td>
                     <td>'.$boletin.'</td>
-                    <td><a href="editar?u='.$id.'">Editar</a></td>
-                    <td><a href="eliminar?u='.$id.'">Eliminar</a></td>
+                    <td><a href="editar?u='.$id.'"><i class="far fa-edit"></i></a></td>
+                    <td><a href="eliminar?u='.$id.'"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
                 ';
 

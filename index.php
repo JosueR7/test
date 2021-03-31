@@ -26,11 +26,11 @@
             </div>
             
                 <thead>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Sexo</th>
-                    <th>Área</th>
-                    <th>Boletin</th>
+                    <th><i class="fas fa-user"></i>Nombre</th>
+                    <th><i class="fas fa-at"></i>Email</th>
+                    <th><i class="fas fa-venus-mars"></i>Sexo</th>
+                    <th><i class="fas fa-briefcase"></i>Área</th>
+                    <th><i class="fas fa-envelope"></i>Boletin</th>
                     <th>Modificar</th>
                     <th>Eliminar</th>
                 </thead>
@@ -51,6 +51,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
 
 <script src="js/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
-
+<script src="https://kit.fontawesome.com/b252e999a8.js" crossorigin="anonymous"></script>
 </body>
 </html>
