@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Crear Empleado</title>
+    <title>Editar Empleado</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -35,9 +35,9 @@
         require_once('class/ctr_empleados.php');
                     $empleado = new Empleados();
         $opciones = new Opciones();
-            $_GET['u'];
+            $user = $_GET['u'];
             
-            $empleado->update();
+            $empleado->buscarEmpleado($user);
             echo '
             <div class="row m-2">
             <div class="col-3 text-end">
@@ -163,7 +163,7 @@ $area = $_POST['area'];
 $boletin = isset($_POST['boletin']);
 $descripcion = $_POST['desciption'];
 
-$empleado->create($nombre,$email,$sexo,$area,$boletin,$descripcion);
+$empleado->update($nombre,$email,$sexo,$area,$boletin,$descripcion);
 }
 
 ?>

@@ -84,5 +84,14 @@ class Empleados{
             echo "Error al realizar la consulta. Detalle del error: ".$e->getMessage();
         }
     }
+
+    function buscarEmpleado($user){
+        $conexion = new Conect();
+
+        $sql = "SELECT empleados.id,empleados.nombre,email,(CASE WHEN sexo = 'F' THEN 'Femenino'
+        WHEN sexo = 'M' THEN 'Masculino' END) as sexo,areas.nombre as area,(CASE WHEN boletin = '1' THEN 'SI'
+        WHEN boletin = '0' THEN 'NO' END) as boletin FROM empleados INNER JOIN areas ON empleados.area_id=areas.id WHERE empleados.id='$user'";
+
+    }
 }
 ?>
