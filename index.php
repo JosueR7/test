@@ -54,3 +54,12 @@
 <script src="https://kit.fontawesome.com/b252e999a8.js" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<?php 
+if (isset($_GET['m'])) {
+    $mensaje = $_GET['m'];
+
+    echo "<script>alert('".$mensaje."')</script>";
+}
+
+?>

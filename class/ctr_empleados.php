@@ -80,6 +80,7 @@ class Empleados{
         try {
             $make = $conexion->prepare($sql);
             $make->execute();
+            echo "<script>alert('Empleado eliminado con exito')</script>";
         } catch (PDOException $e) {
             echo "Error al realizar la consulta. Detalle del error: ".$e->getMessage();
         }

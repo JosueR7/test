@@ -7,7 +7,7 @@ $empleado = new Empleados();
 $user = $_GET['u'];
 
 $empleado->delete($user);
-header('Location: ../prueba-tecnica/');
+header('Location: ../prueba-tecnica/?m=Empleado eliminado con exito');
 
 
 ?>
