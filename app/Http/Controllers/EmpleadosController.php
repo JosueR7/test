@@ -65,7 +65,7 @@ class EmpleadosController extends Controller
         }
 
 
-        return redirect()->route('index');
+        return redirect()->route('empleado.index');
     }
 
     /**
@@ -85,9 +85,12 @@ class EmpleadosController extends Controller
      * @param  \App\Empleados  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function edit(Empleados $empleados)
+    public function edit($id)
     {
-        //
+        $roles = Roles::all();
+        $areas = Areas::all();
+        $empleado = Empleados::findOrFail($id);
+        return view('editarempleado', compact('empleado','roles','areas'));
     }
 
     /**
@@ -110,9 +113,9 @@ class EmpleadosController extends Controller
      */
     public function destroy($id)
     {
-        Empleados::delete($id);
+        Empleados::destroy($id);
 
-        return redirect()->route('index');
+        return redirect()->route('empleado.index');
 
 
     }

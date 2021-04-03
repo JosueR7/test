@@ -9,7 +9,7 @@
         <h1>@yield('title')</h1>
     </div>
     <div class="row">
-        <form class="m-2 needs-validation" method="post" action="/empleado">
+        <form class="m-2 needs-validation" method="post" action="/">
             {{ csrf_field() }}
 
             <div class="row m-2">
@@ -17,7 +17,7 @@
                 <label for="nombre">Nombre Completo *</label>
               </div>
               <div class="col-9">
-                <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre completo del empleado" required="required">
+                <input class="form-control" value="{{$empleado->nombre}}" type="text" name="nombre" id="nombre" placeholder="Nombre completo del empleado" required="required">
               </div>
             </div>
 

@@ -34,9 +34,9 @@
                         <td>{{$empleado->sexo}}</td>
                         <td>{{$empleado->area}}</td>
                         <td>{{$empleado->boletin}}</td>
-                        <td><a href="#"><i class="far fa-edit"></i></a></td>
+                        <td><a href="{{url('empleado/'.$empleado->id.'/edit')}}"><i class="far fa-edit"></i></a></td>
                         <td>
-                            <form action="{{ url('/'.$empleado->id) }}" method="post">
+                            <form action="{{ url('empleado/'.$empleado->id) }}" method="post">
                                 @csrf
                                 {{ method_field('DELETE') }}
                                 <button type="submit">
