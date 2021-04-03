@@ -21,7 +21,7 @@ class EmpleadosController extends Controller
             ->join('areas','empleados.area_id','=','areas.id')
             ->select('empleados.id','empleados.nombre as nombre','email',DB::raw('CASE sexo WHEN "F" THEN "Femenino"
             WHEN "M" THEN "Masculino" END as sexo'),'areas.nombre as area',DB::raw('CASE boletin WHEN "1" THEN "SI"
-            WHEN "0" THEN "NO" END as boletin'))
+            WHEN "0" THEN "NO" END as boletin'),'descripcion')
             ->get();
 
         return view('empleados', compact('empleados'));

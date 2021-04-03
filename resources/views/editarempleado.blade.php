@@ -26,7 +26,7 @@
                 <label for="email">Correo electrónico *</label>
               </div>
               <div class="col-9">
-                <input class="form-control" type="email" name="email" id="email" placeholder="Correo electrónico" required="required">
+                <input class="form-control" value="{{$empleado->email}}" type="email" name="email" id="email" placeholder="Correo electrónico" required="required">
               </div>
             </div>
 
@@ -67,7 +67,7 @@
                 <label for="descripcion">Descripción *</label>
               </div>
                <div class="col 9">
-                <textarea class="form-control" name="descripcion" id="descripcion" rows="3" placeholder="Descripción de la experiencia del empleado"></textarea>
+                <textarea class="form-control" name="descripcion" id="descripcion" rows="3" placeholder="Descripción de la experiencia del empleado">{{$empleado->descripcion}}</textarea>
                </div>
             </div>
 
