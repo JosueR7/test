@@ -1,7 +1,7 @@
 
 @extends('template')
 
-@section('title', 'Crear empleado')
+@section('title', 'Editar empleado')
 
 @section('content')
 <div class="container">
@@ -9,8 +9,9 @@
         <h1>@yield('title')</h1>
     </div>
     <div class="row">
-        <form class="m-2 needs-validation" method="post" action="/">
+        <form class="m-2 needs-validation" method="post" action="{{ url('/empleado/'.$empleado->id) }}">
             {{ csrf_field() }}
+            {{ method_field('PATCH') }}
 
             <div class="row m-2">
               <div class="col-3 text-end">

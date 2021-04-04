@@ -61,7 +61,6 @@ class EmpleadosController extends Controller
 
             $empleado->save();
 
-
         }
 
 
@@ -100,9 +99,29 @@ class EmpleadosController extends Controller
      * @param  \App\Empleados  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Empleados $empleados)
+    public function update(Request $request, $id)
     {
-        //
+        $empleado = request()->except('_token','_method');
+
+
+        if ($request->input('boletin')) {
+            Empleados::where('id','=',$id)->update($empleado);
+        } else{
+            $empleado = new Empleados;
+            $empleado->nombre = $request->nombre;
+            $empleado->email = $request->email;
+            $empleado->sexo = $request->sexo;
+            $empleado->area_id = $request->area_id;
+            $request->boletin = 0;
+            $empleado->boletin = $request->boletin;
+            $empleado->descripcion = $request->descripcion;
+
+            $empleado->update();
+
+        }
+
+        $empleado = Empleados::findOrFail($id);
+        return redirect()->route('empleado.index');
     }
 
     /**
