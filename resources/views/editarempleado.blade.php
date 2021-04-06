@@ -37,12 +37,14 @@
               </div>
               <div class="col-9">
                 <div class="d-block">
+
+
                   <div class="custom-control custom-radio">
-                    <input id="male" name="sexo" type="radio" class="form-check-input" value="M" required>
+                    <input id="male" name="sexo" type="radio" class="form-check-input" value="M" @if ($empleado->sexo == 'M') checked @endif required>
                     <label class="custom-control-label" for="male">Masculino</label>
                   </div>
                   <div class="custom-control custom-radio">
-                    <input id="female" name="sexo" type="radio" class="form-check-input" value="F" required>
+                    <input id="female" name="sexo" type="radio" class="form-check-input" value="F" @if ($empleado->sexo == 'F') checked @endif required>
                     <label class="custom-control-label" for="female">Femenino</label>
                   </div>
                 </div>
@@ -75,7 +77,7 @@
             <div class="row m-2">
               <div class="col-3"></div>
               <div class="col-9">
-                <input class="form-check-input" type="checkbox" name="boletin" id="boletin" value="1">
+                <input class="form-check-input" type="checkbox" name="boletin" id="boletin" value="1" @if ($empleado->boletin == 1) checked @endif>
                 <label for="boletin">Deseo recibir boletin informativo</label>
               </div>
             </div>
@@ -86,11 +88,18 @@
               </div>
               <div class="col 9">
                 <div class="d-block">
+
                     @foreach ($roles as $rol)
+                        @foreach ( $empleado_rol as $er)
+
+
                     <div class="custom-control custom-checkbox">
-                        <input id="rol{{$rol->id}}" value="{{$rol->id}}" name="rol" type="checkbox" class="form-check-input">
+                        <input id="rol{{$rol->id}}" value="{{$rol->id}}" name="rol" type="checkbox" class="form-check-input"
+                        @if ($rol->id == $er->rol_id) checked ="1" @endif
+                         />
                     <label class="custom-control-label" for="rol{{$rol->id}}">{{$rol->nombre}}</label>
                     </div>
+                    @endforeach
 
                     @endforeach
 

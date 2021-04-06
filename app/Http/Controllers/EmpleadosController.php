@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 use App\Empleados;
 use App\Roles;
 use App\Areas;
+use App\EmpleadoRol;
+use App\RolEmpleado;
 use Illuminate\Http\Request;
 
 class EmpleadosController extends Controller
@@ -49,6 +51,11 @@ class EmpleadosController extends Controller
     {
         if ($request->input('boletin')) {
             $empleado = Empleados::create($request->all());
+
+            $rol = new EmpleadoRol;
+            $rol->empleado_id = $empleado->id;
+            $rol->rol_id = $request->rol;
+            $rol->save();
         } else{
             $empleado = new Empleados;
             $empleado->nombre = $request->nombre;
@@ -60,6 +67,12 @@ class EmpleadosController extends Controller
             $empleado->descripcion = $request->descripcion;
 
             $empleado->save();
+
+            $rol = new EmpleadoRol;
+            $rol->empleado_id = $empleado->id;
+            $rol->rol_id = $request->rol;
+            $rol->save();
+
 
         }
 
@@ -86,10 +99,13 @@ class EmpleadosController extends Controller
      */
     public function edit($id)
     {
+        $empleado = Empleados::findOrFail($id);
+        $empleado_rol = EmpleadoRol::where('empleado_id','=',$empleado->id)
+        ->get();
         $roles = Roles::all();
         $areas = Areas::all();
-        $empleado = Empleados::findOrFail($id);
-        return view('editarempleado', compact('empleado','roles','areas'));
+
+        return view('editarempleado', compact('empleado','empleado_rol','roles','areas'));
     }
 
     /**
@@ -118,6 +134,11 @@ class EmpleadosController extends Controller
 
             $empleado->update();
 
+            $rol = new EmpleadoRol;
+            $rol->empleado_id = $empleado->id;
+            $rol->rol_id = $request->rol;
+            $rol->update();
+
         }
 
         $empleado = Empleados::findOrFail($id);
@@ -133,6 +154,7 @@ class EmpleadosController extends Controller
     public function destroy($id)
     {
         Empleados::destroy($id);
+        //EmpleadoRol::destroy($id);
 
         return redirect()->route('empleado.index');
 
