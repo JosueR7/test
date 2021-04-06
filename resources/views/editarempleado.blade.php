@@ -58,7 +58,7 @@
               <div class="col-9">
                 <select class="form-select" name="area_id">
                     @foreach ($areas as $area)
-                    <option value="{{$area->id}}"@if ($area->id == $empleado->area_id) selected @endif>{{$area->nombre}}</option>
+                    <option value="{{$area->id}}" @if ($area->id == $empleado->area_id) selected @endif>{{$area->nombre}}</option>
                     @endforeach
 
                 </select>
@@ -91,16 +91,12 @@
 
                     @foreach ($roles as $rol)
                         @foreach ( $empleado_rol as $er)
-
-
-                    <div class="custom-control custom-checkbox">
-                        <input id="rol{{$rol->id}}" value="{{$rol->id}}" name="rol" type="checkbox" class="form-check-input"
-                        @if ($rol->id == $er->rol_id) checked ="1" @endif
-                         />
-                    <label class="custom-control-label" for="rol{{$rol->id}}">{{$rol->nombre}}</label>
-                    </div>
-                    @endforeach
-
+                            <div class="custom-control custom-checkbox">
+                                <input id="rol{{$rol->id}}" value="{{$rol->id}}" name="rol" type="checkbox" class="form-check-input"
+                                @if ($rol->id == $er->rol_id) checked @endif/>
+                                <label class="custom-control-label" for="rol{{$rol->id}}">{{$rol->nombre}}</label>
+                            </div>
+                        @endforeach
                     @endforeach
 
               </div>

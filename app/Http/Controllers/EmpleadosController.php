@@ -117,34 +117,26 @@ class EmpleadosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $empleado = request()->except('_token','_method','rol');
-        $rol = request()->only('rol as rol_id');
-        //$rol->rol_id = $request->rol;
 
         if ($request->input('boletin')) {
+            $empleado = request()->except('_token','_method','rol');
+            $empleadoRol = request()->only('rol');
+            $rol['rol_id'] = $empleadoRol['rol'];
+
+            Empleados::where('id','=',$id)->update($empleado);
+            EmpleadoRol::where('empleado_id','=',$id)->update($rol);
+        } else{
+
+            $empleado = request()->except('_token','_method','rol');
+            $empleado['boletin'] = 0;
+            $empleadoRol = request()->only('rol');
+            $rol['rol_id'] = $empleadoRol['rol'];
+
             Empleados::where('id','=',$id)->update($empleado);
             EmpleadoRol::where('empleado_id','=',$id)->update($rol);
 
-        } else{
-            $empleado = new Empleados;
-            $empleado->nombre = $request->nombre;
-            $empleado->email = $request->email;
-            $empleado->sexo = $request->sexo;
-            $empleado->area_id = $request->area_id;
-            $request->boletin = 0;
-            $empleado->boletin = $request->boletin;
-            $empleado->descripcion = $request->descripcion;
-
-            $empleado->update();
-
-            $rol = new EmpleadoRol;
-            $rol->empleado_id = $empleado->id;
-            $rol->rol_id = $request->rol;
-            $rol->update();
-
         }
 
-        $empleado = Empleados::findOrFail($id);
         return redirect()->route('empleado.index');
     }
 
