@@ -58,7 +58,7 @@
               <div class="col-9">
                 <select class="form-select" name="area_id">
                     @foreach ($areas as $area)
-                    <option value="{{$area->id}}">{{$area->nombre}}</option>
+                    <option value="{{$area->id}}"@if ($area->id == $empleado->area_id) selected @endif>{{$area->nombre}}</option>
                     @endforeach
 
                 </select>

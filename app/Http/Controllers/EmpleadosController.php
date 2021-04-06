@@ -117,11 +117,14 @@ class EmpleadosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $empleado = request()->except('_token','_method');
-
+        $empleado = request()->except('_token','_method','rol');
+        $rol = request()->only('rol as rol_id');
+        //$rol->rol_id = $request->rol;
 
         if ($request->input('boletin')) {
             Empleados::where('id','=',$id)->update($empleado);
+            EmpleadoRol::where('empleado_id','=',$id)->update($rol);
+
         } else{
             $empleado = new Empleados;
             $empleado->nombre = $request->nombre;
