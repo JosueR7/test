@@ -1,3 +1,4 @@
+<p>Resolviendo Prueba Tecnica</p>
 <p>Para la base de datos se debe usar el comando:
 <code>php artisan migrate</code>
 </p>
